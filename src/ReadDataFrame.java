@@ -37,6 +37,9 @@ public class ReadDataFrame extends javax.swing.JFrame {
     String[] columnNames = {"No", "Resi", "Nama", "Alamat", "No-telp", "Produk", "QTY", "Konfirmasi", "Status"};
     TableRowSorter<TableModel> rowSorter;
     int no;
+
+    int selectedRow;
+
     public ReadDataFrame( ) {
         this.pesananSearchList = new ArrayList<>();
         database = new Database();
@@ -257,7 +260,11 @@ public class ReadDataFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // Delete button
 
-        int selectedRow = jTable1.getSelectedRow();
+        selectedRow = jTable1.getSelectedRow();
+        String table_click0 = jTable1.getModel().getValueAt(jTable1.
+        convertRowIndexToModel(selectedRow), 0).toString();
+        selectedRow = Integer.parseInt(table_click0) - 1;
+        
         if(selectedRow>= 0){
         String message = String.format("Anda yakin menghapus resi \"%s\" dengan nama \"%s\" ?????", pesananList.get(selectedRow).getResi(), pesananList.get(selectedRow).getNama());
         int result_option = JOptionPane.showConfirmDialog(rootPane, message, "ALERT", JOptionPane.YES_NO_OPTION);
@@ -287,7 +294,11 @@ public class ReadDataFrame extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Detail
         
-        int selectedRow = jTable1.getSelectedRow();
+        selectedRow = jTable1.getSelectedRow();
+        String table_click0 = jTable1.getModel().getValueAt(jTable1.
+        convertRowIndexToModel(selectedRow), 0).toString();
+        selectedRow = Integer.parseInt(table_click0) - 1;
+
 
 
         
